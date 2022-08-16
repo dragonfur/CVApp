@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/CVApp/static/css/main.639f4a39.css",
+    "main.js": "/CVApp/static/js/main.644ac072.js",
+    "index.html": "/CVApp/index.html",
+    "static/media/linkedin.svg": "/CVApp/static/media/linkedin.36ffd834c67b04176728567176882d5e.svg",
+    "static/media/pracImage.svg": "/CVApp/static/media/pracImage.8cb5d421e2f4f18bf8ade6e4f31bfa7a.svg",
+    "static/media/phone.svg": "/CVApp/static/media/phone.aad96556bcb642181678173f1977cb55.svg",
+    "static/media/location.svg": "/CVApp/static/media/location.1a6cd814088b23d80d95f1d4357346b2.svg",
+    "static/media/educImage.svg": "/CVApp/static/media/educImage.93d8ee8485d6ecbe8562dfd78fe2cd9d.svg",
+    "static/media/email.svg": "/CVApp/static/media/email.a7bb2e936f74b673dfcc75bf2ad26651.svg",
+    "main.639f4a39.css.map": "/CVApp/static/css/main.639f4a39.css.map",
+    "main.644ac072.js.map": "/CVApp/static/js/main.644ac072.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.639f4a39.css",
+    "static/js/main.644ac072.js"
+  ]
+}
