@@ -1,0 +1,14 @@
+div.Add,
+div.Delete {
+    color: white;
+    background-color: #7D9D9C;
+    transition: .15s;
+}
+
+.Add:hover {
+    background-color: lightgreen;
+}
+
+.Delete:hover {
+    background-color: tomato;
+}

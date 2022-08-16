@@ -1,0 +1,10 @@
+.generatePDF,
+.Clear {
+    background-color: #576F72;
+    transition: .15s;
+}
+
+.generatePDF:hover,
+.Clear:hover {
+    background-color: darkgreen;
+}
