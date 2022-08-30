@@ -1,16 +1,10 @@
 import React, { Component } from "react";
 
-class Title extends Component {
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
-        return (
-            <h1 style={TitleStyle}>{this.props.text}</h1>
-        )
-    }
-} 
+const Title = ({ text }) => {
+    return (
+        <h1 style={TitleStyle}>{text}</h1>
+    )
+}
 
 const TitleStyle = {
     fontWeight: 'bold',

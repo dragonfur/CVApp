@@ -1,31 +1,25 @@
 import React, { Component } from "react";
 
-class EducaionalTemplate extends Component {
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
-        return (
-            <div style={EducationTemplateStyle}>
-                {this.props.educationInfo.map((i) => (
-                    <div>
-                        <div className="yearsTitle" style={educInfoStyle}>
-                            <div className="years"  style={yearsStyle}>
-                                {i.dateStartedEduc} - {i.dateEndedEduc}
-                            </div>
-                            <div className="educName" style={educName}>
-                                {i.areaStudy}
-                            </div>
+const EducaionalTemplate = ({ educationInfo }) => {
+    return (
+        <div style={EducationTemplateStyle}>
+            {educationInfo.map((i) => (
+                <div key={i.id}>
+                    <div className="yearsTitle" style={educInfoStyle}>
+                        <div className="years"  style={yearsStyle}>
+                            {i.dateStartedEduc} - {i.dateEndedEduc}
                         </div>
-                        <div className="school" style={schoolStyle}>
-                            {i.schoolName}
+                        <div className="educName" style={educName}>
+                            {i.areaStudy}
                         </div>
                     </div>
-                ))}
-            </div>
-        )
-    }
+                    <div className="school" style={schoolStyle}>
+                        {i.schoolName}
+                    </div>
+                </div>
+            ))}
+        </div>
+    )
 }
 
 const EducationTemplateStyle = {

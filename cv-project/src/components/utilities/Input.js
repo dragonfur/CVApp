@@ -1,25 +1,19 @@
 import React, { Component } from 'react'
 
-class Input extends Component {
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
-        return (
-            <input 
-            type={this.props.type} 
-            className={this.props.className}
-            name={this.props.name}
-            id={this.props.id}
-            placeholder={this.props.placeholder}
-            style={
-                (this.props.type === 'month') ? dateInputStyle : (this.props.type === 'checkbox') ? checkboxInputStyle : inputStyle
-            }
-            value={this.props.value} 
-            onChange={this.props.onChange}></input>
-        )
-    }
+const Input = ({type, className, name, id, placeholder, value, onChange}) => {
+    return (
+        <input 
+        type={type} 
+        className={className}
+        name={name}
+        id={id}
+        placeholder={placeholder}
+        style={
+            (type === 'month') ? dateInputStyle : (type === 'checkbox') ? checkboxInputStyle : inputStyle
+        }
+        value={value} 
+        onChange={onChange}></input>
+    )
 }
 
 const inputStyle = {

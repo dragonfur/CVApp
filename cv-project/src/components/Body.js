@@ -1,32 +1,21 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import CVFormCreator from "./CVForm/CVFormCreator";
 import CVPreview from "./CVForm/CVPreview";
 import '../components/stylesheets/SmallScreens.css'
 import info from "./utilities/Info";
 import uuid from "react-uuid";
 
-class Body extends Component {
-    constructor() {
-        super()
-        this.state = {
-            EducationalExperiences: [info.education],
-            PracticalExperiences: [info.practical],
-            PersonalInfo: [info.personal]
-        }
-        this.handleAddEducClick = this.handleAddEducClick.bind(this)
-        this.handleDeleteEducClick = this.handleDeleteEducClick.bind(this)
-        this.handleAddPracClick = this.handleAddPracClick.bind(this)
-        this.handleDeletePracClick = this.handleDeletePracClick.bind(this)
-        this.handleChangeEduc = this.handleChangeEduc.bind(this)
-        this.handleChangePrac = this.handleChangePrac.bind(this)
-        this.handleChangePers = this.handleChangePers.bind(this)
-        this.handleClearForm = this.handleClearForm.bind(this)
-        this.myRef = React.createRef()
-    }
+const Body = () => {
+    const [infos, setInfos] = useState({
+        EducationalExperiences: [info.education],
+        PracticalExperiences: [info.practical],
+        PersonalInfo: [info.personal]
+    })
 
-    handleAddEducClick() {
-        this.setState((prevState) => {
+    const handleAddEducClick = () => {
+        setInfos((prevState) => {
             return {
+                ...prevState,
                 EducationalExperiences: prevState.EducationalExperiences.concat({
                     id: uuid(),
                     schoolName: '',
@@ -39,18 +28,20 @@ class Body extends Component {
         )
     }
 
-    handleDeleteEducClick(event) {
-        this.setState((prevState) => {
+    const handleDeleteEducClick = (event) => {
+        setInfos((prevState) => {
             return {
+                ...prevState,
                 EducationalExperiences: prevState.EducationalExperiences.filter(a =>
                     event.target.id !== a.id)
             }
         })
     }
 
-    handleAddPracClick() {
-        this.setState((prevState) => {
+    const handleAddPracClick = () => {
+        setInfos((prevState) => {
             return {
+                ...prevState,
                 PracticalExperiences: prevState.PracticalExperiences.concat({
                     id: uuid(),
                     companyName: '',
@@ -63,19 +54,20 @@ class Body extends Component {
         })
     }
 
-    handleDeletePracClick(event) {
-        this.setState((prevState) => {
+    const handleDeletePracClick = (event) => {
+        setInfos((prevState) => {
             return {
+                ...prevState,
                 PracticalExperiences: prevState.PracticalExperiences.filter(a => 
                     event.target.id !== a.id)
             }
         })
     }
 
-    handleChangeEduc(event) {
+    const handleChangeEduc = (event) => {
         const id = event.target.id
         const val = event.target.value
-        this.setState((prevState) => {
+        setInfos((prevState) => {
             const change = prevState.EducationalExperiences.map((item) => {
                 if (item.id === id) {
                     return { ...item, [event.target.name]: val}
@@ -84,14 +76,15 @@ class Body extends Component {
                 }
             })
             return {
+                ...prevState,
                 EducationalExperiences: change}
         })
     }
 
-    handleChangePrac(event) {
+    const handleChangePrac = (event) => {
         const id = event.target.id
         const val = event.target.value
-        this.setState((prevState) => {
+        setInfos((prevState) => {
             const change = prevState.PracticalExperiences.map((item) => {
                 if (item.id === id) {
                     return { ...item, [event.target.name]: val}
@@ -100,14 +93,16 @@ class Body extends Component {
                 }
             })
             return {
+                ...prevState,
                 PracticalExperiences: change}
         })
     }
 
-    handleChangePers(event) {
+    const handleChangePers = (event) => {
         const id = event.target.id
         const val = event.target.value
-        this.setState((prevState) => {
+        setInfos((prevState) => {
+            
             const change = prevState.PersonalInfo.map((item) => {
                 if (item.id === id) {
                     return { ...item, [event.target.name]: val}
@@ -116,12 +111,14 @@ class Body extends Component {
                 }
             })
             return {
-                PersonalInfo: change}
+                ...prevState,
+                PersonalInfo: change
+            }
         })
     }
 
-    handleClearForm() {
-        this.setState(() => {
+    const handleClearForm = () => {
+        setInfos(() => {
             return {
                 EducationalExperiences: [info.education],
                 PracticalExperiences: [info.practical],
@@ -130,42 +127,40 @@ class Body extends Component {
         })
         Object.keys(info.personal).forEach((key) => {
             if (key === "id") return
-            this.clearInput(key)
+            clearInput(key)
         })
         Object.keys(info.education).forEach((key) => {
             if (key === "id") return
-            this.clearInput(key)
+            clearInput(key)
         })
         Object.keys(info.practical).forEach((key) => {
             if (key === "id") return
-            this.clearInput(key)
+            clearInput(key)
         })
     }
 
-    clearInput(inputName) {
+    const clearInput = (inputName) => {
         const input = document.querySelector(`.${inputName}`)
         input.value = ""
     }
 
-    render() {
-        return (
-            <div style={bodyStyle} className='Contents'>
-                <CVFormCreator
-                handleAddEducClick={this.handleAddEducClick}
-                handleAddPracClick={this.handleAddPracClick}
-                handleDeleteEducClick={this.handleDeleteEducClick}
-                handleDeletePracClick={this.handleDeletePracClick}
-                EducationalExperiences={this.state.EducationalExperiences}
-                PracticalExperiences={this.state.PracticalExperiences}
-                handleChangeEduc={this.handleChangeEduc}
-                handleChangePrac={this.handleChangePrac}
-                handleChangePers={this.handleChangePers}
-                handleClearForm={this.handleClearForm}
-                />
-                <CVPreview cvInfo={this.state} ref={this.myRef}/>
-            </div>
-        )
-    }
+    return (
+        <div style={bodyStyle} className='Contents'>
+            <CVFormCreator
+            handleAddEducClick={handleAddEducClick}
+            handleAddPracClick={handleAddPracClick}
+            handleDeleteEducClick={handleDeleteEducClick}
+            handleDeletePracClick={handleDeletePracClick}
+            EducationalExperiences={infos.EducationalExperiences}
+            PracticalExperiences={infos.PracticalExperiences}
+            handleChangeEduc={handleChangeEduc}
+            handleChangePrac={handleChangePrac}
+            handleChangePers={handleChangePers}
+            handleClearForm={handleClearForm}
+            />
+            <CVPreview cvInfo={infos}/>
+        </div>
+    )
 }
 
 const bodyStyle = {

@@ -9,27 +9,19 @@ import '../stylesheets/CVPreview.css'
 import EducaionalTemplate from "../utilities/EducationTemplate";
 import PracticalTemplate from "../utilities/PracticalTemplate";
 
-class CVPreview extends Component {
-    constructor(props) {
-        super(props)
-    }
+const CVPreview = (cvInfo) => {
 
-    render() {
-
-        const { cvInfo } = this.props
-
-        return (
-            <div style={CVPreviewStyle} className='Preview'>
-                <Introduction firstName={cvInfo.PersonalInfo[0].firstName}lastName={cvInfo.PersonalInfo[0].lastName} jobTitle={cvInfo.PersonalInfo[0].jobTitle} objective={cvInfo.PersonalInfo[0].descObjective}>
-                    <ContactInfo phoneNumber={cvInfo.PersonalInfo[0].phoneNumber} email={cvInfo.PersonalInfo[0].email}  website={cvInfo.PersonalInfo[0].website} address={cvInfo.PersonalInfo[0].address} />
-                </Introduction>
-                <SectionHead text="Experience" myImage={practicalImage}/>
-                <PracticalTemplate practicalInfo={cvInfo.PracticalExperiences}/>
-                <SectionHead text="Education" myImage={educationImage}/>
-                <EducaionalTemplate educationInfo={cvInfo.EducationalExperiences}/>
-            </div>
-        )
-    }
+    return (
+        <div style={CVPreviewStyle} className='Preview'>
+            <Introduction firstName={cvInfo.cvInfo.PersonalInfo[0].firstName}lastName={cvInfo.cvInfo.PersonalInfo[0].lastName} jobTitle={cvInfo.cvInfo.PersonalInfo[0].jobTitle} objective={cvInfo.cvInfo.PersonalInfo[0].descObjective}>
+                <ContactInfo phoneNumber={cvInfo.cvInfo.PersonalInfo[0].phoneNumber} emailtext={cvInfo.cvInfo.PersonalInfo[0].email}  website={cvInfo.cvInfo.PersonalInfo[0].website} address={cvInfo.cvInfo.PersonalInfo[0].address} />
+            </Introduction>
+            <SectionHead text="Experience" myImage={practicalImage}/>
+            <PracticalTemplate practicalInfo={cvInfo.cvInfo.PracticalExperiences}/>
+            <SectionHead text="Education" myImage={educationImage}/>
+            <EducaionalTemplate educationInfo={cvInfo.cvInfo.EducationalExperiences}/>
+        </div>
+    )
 }
 
 const CVPreviewStyle = {

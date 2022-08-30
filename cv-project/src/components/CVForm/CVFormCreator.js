@@ -11,39 +11,33 @@ import "../stylesheets/DeleteAdd.css"
 import "../stylesheets/formButtons.css"
 import info from "../utilities/Info";
 
-class CVFormCreator extends Component {
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
-        return (
-            <form className='CVFormCreator' style={CVFormCreatorStyle} onSubmit={onSubmitButton} id="lol">
-                <Section sectionName='personalInfo' isLast={false}>
-                    <Title text='Personal Information' />
-                    <PersonalInformation key={`${info.personal.id}`} id={`${info.personal.id}`} onChange={this.props.handleChangePers} />
-                </Section>
-                <Section sectionName='educInfo' isLast={false}>
-                    <Title text='Educational Experience' />
-                    {this.props.EducationalExperiences.map((i) => (
-                        <EducationalExperience key={`${i.id}`} id={`${i.id}`} handler={this.props.handleDeleteEducClick}
-                        onChange={this.props.handleChangeEduc}/>
-                    ))}
-                    <AddOrDelete text='Add' typeButton='Add' onClick={this.props.handleAddEducClick} />
-                </Section>
-                <Section sectionName='pracInfo' isLast={true}>
-                    <Title text='Practical Experience' />
-                    {this.props.PracticalExperiences.map((i) => (
-                        <PracticalExperience key={`${i.id}`} id={`${i.id}`} handler={this.props.handleDeletePracClick} onChange={this.props.handleChangePrac}/>
-                    ))}
-                    <AddOrDelete text='Add' typeButton='Add' onClick={this.props.handleAddPracClick}/>
-                </Section>
-                <Section sectionName='formButton' styleName={sectionFormat} >
-                    <Button text='Clear' buttonClass='Clear' onClick={this.props.handleClearForm}/>
-                </Section>
-            </form>
-        )
-    }
+const CVFormCreator = ({ handleChangePers, EducationalExperiences, handleDeleteEducClick, handleChangeEduc, handleAddEducClick, PracticalExperiences, handleDeletePracClick, handleChangePrac, handleAddPracClick, handleClearForm }) => {
+    return (
+        <form className='CVFormCreator' style={CVFormCreatorStyle} onSubmit={onSubmitButton} id="lol">
+            <Section sectionName='personalInfo' isLast={false}>
+                <Title text='Personal Information' />
+                <PersonalInformation key={`${info.personal.id}`} id={`${info.personal.id}`} onChange={handleChangePers} />
+            </Section>
+            <Section sectionName='educInfo' isLast={false}>
+                <Title text='Educational Experience' />
+                {EducationalExperiences.map((i) => (
+                    <EducationalExperience key={`${i.id}`} id={`${i.id}`} handler={handleDeleteEducClick}
+                    onChange={handleChangeEduc}/>
+                ))}
+                <AddOrDelete text='Add' typeButton='Add' onClick={handleAddEducClick} />
+            </Section>
+            <Section sectionName='pracInfo' isLast={true}>
+                <Title text='Practical Experience' />
+                {PracticalExperiences.map((i) => (
+                    <PracticalExperience key={`${i.id}`} id={`${i.id}`} handler={handleDeletePracClick} onChange={handleChangePrac}/>
+                ))}
+                <AddOrDelete text='Add' typeButton='Add' onClick={handleAddPracClick}/>
+            </Section>
+            <Section sectionName='formButton' styleName={sectionFormat} >
+                <Button text='Clear' buttonClass='Clear' onClick={handleClearForm}/>
+            </Section>
+        </form>
+    )
 }
 
 const sectionFormat = {

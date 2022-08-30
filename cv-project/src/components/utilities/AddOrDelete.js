@@ -1,17 +1,11 @@
 import React, { Component } from "react";
 import '../stylesheets/DeleteAdd.css'
 
-class AddOrDelete extends Component {
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
-        return (
-            <div style={{ ...AddOrDeleteStyle, ...this.props.style2 }} className={this.props.typeButton} onClick={this.props.onClick} id={this.props.id}
-            >{this.props.text}</div>
-        )
-    }
+const AddOrDelete = ({style2, typeButton, onClick, id, text}) => {
+    return (
+        <div style={{ ...AddOrDeleteStyle, ...style2 }} className={typeButton} onClick={onClick} id={id}
+        >{text}</div>
+    )
 }
 
 const AddOrDeleteStyle = {

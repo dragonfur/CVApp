@@ -1,18 +1,12 @@
 import React, { Component } from "react";
 
-class SectionHead extends Component {
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
-        return (
-            <div style={sectionHeadStyle}>
-                <img src={this.props.myImage} style={imgStyle} />
-                {this.props.text}
-            </div>
-        )
-    }
+const SectionHead = ({ myImage, text }) => {
+    return (
+        <div style={sectionHeadStyle}>
+            <img src={myImage} style={imgStyle} />
+            {text}
+        </div>
+    )
 }
 
 const sectionHeadStyle = {

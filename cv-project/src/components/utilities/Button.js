@@ -1,20 +1,14 @@
 import React, { Component } from 'react'
 
-class Button extends Component {
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
-        return (
-            <button 
-            className={this.props.buttonClass} 
-            style={buttonStyle} 
-            onClick={this.props.onClick}>
-                {this.props.text}
-            </button>
-        )
-    }
+const Button = ({buttonClass, onClick, text}) => {
+    return (
+        <button 
+        className={buttonClass} 
+        style={buttonStyle} 
+        onClick={onClick}>
+            {text}
+        </button>
+    )
 }
 
 const buttonStyle = {

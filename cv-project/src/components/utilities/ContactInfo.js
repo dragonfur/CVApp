@@ -4,35 +4,29 @@ import phone from '../assets/phone.svg'
 import location from '../assets/location.svg'
 import linkedin from '../assets/linkedin.svg'
 
-class ContactInfo extends Component {
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
-        return (
-            <div>
-                <div className="contactInfo" style={contactInfoStyle}>
-                    <div className="number" style={numberStyle}>
-                        <img src={phone} style={imgStyle}/>
-                        {this.props.phoneNumber}
-                    </div>
-                    <div className="email" style={emailStyle}>
-                        <img src={email} style={imgStyle}/>
-                        {this.props.email}
-                    </div>
-                    <div className="website" style={websiteStyle}>
-                        <img src={linkedin} style={imgStyle}/>
-                        {this.props.website}
-                    </div>
-                    <div className="address" style={addressStyle}>
-                        <img src={location} style={imgStyle}/>
-                        {this.props.address}
-                    </div>
+const ContactInfo = ({phoneNumber, emailtext, website, address}) => {
+    return (
+        <div>
+            <div className="contactInfo" style={contactInfoStyle}>
+                <div className="number" style={numberStyle}>
+                    <img src={phone} style={imgStyle}/>
+                    {phoneNumber}
+                </div>
+                <div className="email" style={emailStyle}>
+                    <img src={email} style={imgStyle}/>
+                    {emailtext}
+                </div>
+                <div className="website" style={websiteStyle}>
+                    <img src={linkedin} style={imgStyle}/>
+                    {website}
+                </div>
+                <div className="address" style={addressStyle}>
+                    <img src={location} style={imgStyle}/>
+                    {address}
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 const contactInfoStyle = {

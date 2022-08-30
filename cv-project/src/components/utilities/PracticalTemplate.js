@@ -1,36 +1,30 @@
 import React, { Component } from "react";
 
-class PracticalTemplate extends Component {
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
-        return (
-            <div className="PracticalTemplate" style={PracticalTemplateStyle}>
-                    {this.props.practicalInfo.map((i) => (
-                        <div>
-                            <div className="yearsEXp" style={yearsExpStyle}>
-                                <div className="years" style={yearsStyle} key={i.id}>
-                                    {i.dateStartedPrac} - {i.dateEndedPrac}
-                                </div>
-                                <div className="jobTitle" style={jobTitleStyle}>
-                                    {i.posTitle}
-                                </div>
+const PracticalTemplate = ({practicalInfo}) => {
+    return (
+        <div className="PracticalTemplate" style={PracticalTemplateStyle}>
+                {practicalInfo.map((i) => (
+                    <div key={i.id}>
+                        <div className="yearsEXp" style={yearsExpStyle}>
+                            <div className="years" style={yearsStyle} key={i.id}>
+                                {i.dateStartedPrac} - {i.dateEndedPrac}
                             </div>
-                            <div className="companyJobDesc" style={companyJobDescStyle}>
-                                <div className="company" style={companyStyle}>
-                                    {i.companyName}
-                                </div>
-                                <div className="jobDesc" style={jobDescStyle}>
-                                    {i.descTasks}
-                                </div>
+                            <div className="jobTitle" style={jobTitleStyle}>
+                                {i.posTitle}
                             </div>
                         </div>
-                    ))}
-            </div>
-        )
-    }
+                        <div className="companyJobDesc" style={companyJobDescStyle}>
+                            <div className="company" style={companyStyle}>
+                                {i.companyName}
+                            </div>
+                            <div className="jobDesc" style={jobDescStyle}>
+                                {i.descTasks}
+                            </div>
+                        </div>
+                    </div>
+                ))}
+        </div>
+    )
 }
 
 const PracticalTemplateStyle = {

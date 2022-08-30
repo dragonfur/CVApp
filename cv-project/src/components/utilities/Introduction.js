@@ -1,22 +1,16 @@
 import React, { Component } from "react";
 
-class Introduction extends Component {
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
-        return (
+const Introduction = ({firstName, lastName, jobTitle, children, objective}) => {
+    return (
         <div style={introductionStyle}>
-                <h1>{`${this.props.firstName} ${this.props.lastName}`}</h1>
-                <h2>{this.props.jobTitle}</h2>
-                {this.props.children}
+                <h1>{`${firstName} ${lastName}`}</h1>
+                <h2>{jobTitle}</h2>
+                {children}
                 <div>
-                    {this.props.objective}
+                    {objective}
                 </div>
             </div>
-        )
-    }
+    )
 }
 
 const introductionStyle = {
